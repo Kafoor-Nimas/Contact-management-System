@@ -1,11 +1,41 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const ContactList = ({ contacts, setContacts }) => {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("All Status");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {}, [contacts]);
+  useEffect(() => {
+    const fetchContacts = async () => {
+      setLoading(true);
+      const query = `?status=${statusFilter}&search=${search}`;
+      const fetchPromise = await axios
+        .get(`http://localhost:5000/contacts${query}`)
+        .then((res) => setContacts(res.data))
+        .catch((err) => console.log(err));
+      //set 1s delay to show loading spinner
+      const delay = new Promise((resolve) => setTimeout(resolve, 1000));
+      await Promise.all([fetchPromise, delay]);
+      setLoading(false);
+    };
+    fetchContacts();
+  }, [statusFilter, search, setContacts]);
+
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      await axios.put(`http://localhost:5000/contacts/${id}`, {
+        status: newStatus,
+      });
+      setContacts((prevContacts) =>
+        prevContacts.map((contact) =>
+          contact._id === id ? { ...contact, status: newStatus } : contact
+        )
+      );
+    } catch (error) {
+      console.log("Error updating status:", error);
+    }
+  };
 
   return (
     <div>
@@ -72,6 +102,9 @@ const ContactList = ({ contacts, setContacts }) => {
                     <select
                       value={contact.status}
                       className="p-1 rounded cursor-pointer outline-0 shadow"
+                      onChange={(e) =>
+                        handleStatusChange(contact._id, e.target.value)
+                      }
                     >
                       <option value="Interested">Interested</option>
                       <option value="Follow-up">Follow-up</option>
