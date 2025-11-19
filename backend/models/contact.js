@@ -10,8 +10,8 @@ const contactSchema = new mongoose.Schema({
   company: String,
   status: {
     type: String,
-    enum: ["Intrested", "Follow-up", "Closed"],
-    default: "Intrested",
+    enum: ["Interested", "Follow-up", "Closed"],
+    default: "Interested",
   },
   createdAt: {
     type: Date,
