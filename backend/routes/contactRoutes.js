@@ -14,3 +14,20 @@ router.post("/", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
+router.get("/", async (req, res) => {
+  try {
+    const { status, search } = req.query;
+    let filter = {};
+    if (status) filter.status = status;
+    if (search) {
+      const regex = new RegExp(search, "i");
+      filter.$or = [{ name: regex }, { comapany: regex }];
+      //$or MongoDB operator that means "match ANY of these conditions"
+    }
+    const contacts = await Contact.find(filter).sort({ createdAt: -1 });
+    res.json(contacts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
