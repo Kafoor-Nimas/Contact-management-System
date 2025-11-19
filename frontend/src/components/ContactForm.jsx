@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const ContactForm = ({ contacts, setContacts }) => {
   const [name, setName] = React.useState("");
@@ -6,8 +7,30 @@ const ContactForm = ({ contacts, setContacts }) => {
   const [phone, setPhone] = React.useState("");
   const [company, setCompany] = React.useState("");
   const [status, setStatus] = React.useState("Interested");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !email) return alert("Name and Email are required ");
+    try {
+      const res = await axios.post("http://localhost:5000/contacts", {
+        name,
+        company,
+        email,
+        phone,
+        status,
+      });
+      setContacts([res.data, ...contacts]);
+      setName("");
+      setEmail("");
+      setPhone("");
+      setCompany("");
+      setStatus("Interested");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <form className="space-y-6 " autoComplete="off">
+    <form onSubmit={handleSubmit} className="space-y-6 " autoComplete="off">
       <input
         type="text"
         placeholder="Name"
