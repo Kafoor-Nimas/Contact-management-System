@@ -1,9 +1,58 @@
-import React from 'react'
+import React from "react";
 
 const ContactForm = ({ contacts, setContacts }) => {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [company, setCompany] = React.useState("");
+  const [status, setStatus] = React.useState("Interested");
   return (
-    <div>ContactForm</div>
-  )
-}
+    <form className="space-y-6 " autoComplete="off">
+      <input
+        type="text"
+        placeholder="Name"
+        className="bg-[#eff4ff] p-3 rounded w-full text-[#0c002b] outline-0"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Company"
+        className="bg-[#eff4ff] p-3 rounded w-full text-[#0c002b] outline-0"
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Email"
+        className="bg-[#eff4ff] p-3 rounded w-full text-[#0c002b] outline-0"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Phone"
+        className="bg-[#eff4ff] p-3 rounded w-full text-[#0c002b] outline-0"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+      />
+      <select
+        value={status}
+        className="bg-[#eff4ff] p-3 rounded w-full text-[#0c002b] outline-0 cursor-pointer"
+        onChange={(e) => setStatus(e.target.value)}
+      >
+        <option value="Interested">Interested</option>
+        <option value="Follow-up">Follow-up</option>
+        <option value="Closed">Closed</option>
+      </select>
+      <button
+        type="submit"
+        className="text-white px-4 py-3 rounded bg-[#00277a] hover:bg-[#001a52] transition w-full mt-[10px] cursor-pointer"
+      >
+        Submit
+      </button>
+    </form>
+  );
+};
 
-export default ContactForm
+export default ContactForm;
