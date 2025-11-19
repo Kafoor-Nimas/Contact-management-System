@@ -37,12 +37,12 @@ const ContactList = ({ contacts, setContacts }) => {
         <div>
           <div className="mt-10">
             {contacts.length === 0 && (
-              <div className="w-full h-[415px] flex flex-col items-center justify-center rounded-[5px] p-5 mt-10 gap-4">
+              <div className="w-full h-[415px] flex flex-col items-center justify-center rounded-[5px] p-5 mt-10 gap-4 bg-[#fff]">
                 <img
                   src="/no-contact.jpg"
                   alt="no-contact"
-                  width={200}
-                  height={200}
+                  width={300}
+                  height={300}
                 />
                 <p className="text-[#00277a] text-2xl font-semibold">
                   No contacts found
@@ -77,6 +77,12 @@ const ContactList = ({ contacts, setContacts }) => {
                       <option value="Follow-up">Follow-up</option>
                       <option value="Closed">Closed</option>
                     </select>
+                    <button
+                      onClick={() => handleClick(contact._id)}
+                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition cursor-pointer"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               </div>;
