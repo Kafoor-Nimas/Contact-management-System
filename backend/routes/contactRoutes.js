@@ -19,12 +19,20 @@ router.get("/", async (req, res) => {
   try {
     const { status, search } = req.query;
     let filter = {};
-    if (status) filter.status = status;
+    
+    // Only filter by status if it's not "All Status"
+    if (status && status !== "All Status") {
+      filter.status = status;
+    }
+    
     if (search) {
       const regex = new RegExp(search, "i");
-      filter.$or = [{ name: regex }, { comapany: regex }];
-      //$or MongoDB operator that means "match ANY of these conditions"
+      filter.$or = [
+        { name: regex }, 
+        { company: regex }  
+      ];
     }
+    
     const contacts = await Contact.find(filter).sort({ createdAt: -1 });
     res.json(contacts);
   } catch (error) {

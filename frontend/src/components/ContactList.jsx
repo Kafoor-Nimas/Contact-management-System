@@ -37,6 +37,19 @@ const ContactList = ({ contacts, setContacts }) => {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (confirm("Are you sure you want to delete this contact?")) {
+      try {
+        await axios.delete(`http://localhost:5000/contacts/${id}`);
+        setContacts((prevContacts) =>
+          prevContacts.filter((contact) => contact._id !== id)
+        );
+      } catch (error) {
+        console.log("Error deleting contact:", error);
+      }
+    }
+  };
+
   return (
     <div>
       <div className="flex gap-10">
@@ -81,7 +94,7 @@ const ContactList = ({ contacts, setContacts }) => {
             )}
           </div>
           <div className="grid grid-cols-2 gap-10">
-            {contacts.map((contact) => {
+            {contacts.map((contact) => (
               <div key={contact._id}>
                 <div className="bg-[#eff4ff] shadow-md rounded p-4 flex flex-col justify-between hover:shadow-lg transition">
                   <div>
@@ -111,15 +124,15 @@ const ContactList = ({ contacts, setContacts }) => {
                       <option value="Closed">Closed</option>
                     </select>
                     <button
-                      onClick={() => handleClick(contact._id)}
+                      onClick={() => handleDelete(contact._id)}
                       className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition cursor-pointer"
                     >
                       Delete
                     </button>
                   </div>
                 </div>
-              </div>;
-            })}
+              </div>
+            ))}
           </div>
         </div>
       )}
