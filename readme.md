@@ -40,32 +40,41 @@ Axios-based API calls
 /screenShots
 
 ⚙️ Installation & Setup
-/1️⃣ Clone the repository
+
+1️⃣ Clone the repository
 
 git clone https://github.com/Kafoor-Nimas/Contact-management-System.git
 
 2️⃣ Install backend dependencies
+
 cd backend
 npm install
 
 3️⃣ Install frontend dependencies
+
 cd ../frontend
 npm install
+
 /////////////////////////////////////////////
 4️⃣ Create .env in /server
+
 MONGO_URI=your_mongodb_connection_string
 PORT=5000
 
 ▶️ Running the Project
+
 Start backend
+
 
 cd backend
 npm run dev
 
 Start frontend
+
 cd frontend
 npm start
 ////////////////////////////////////////////////
+
 Backend runs on http://localhost:5000
 Frontend runs on http://localhost:3000
 
