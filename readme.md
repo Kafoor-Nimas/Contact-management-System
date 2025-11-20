@@ -29,30 +29,18 @@ Smooth UX with reusable components
 Axios-based API calls
 
 ![Homepage](./screenShots/screencapture-01.png)
-![Homepage](./screenShots/screencapture-01.png)
-![Homepage](./screenShots/screencapture-01.png)
-![Homepage](./screenShots/screencapture-01.png)
+![Homepage](./screenShots/screencapture-02.png)
+![Homepage](./screenShots/screencapture-03.png)
+![Homepage](./screenShots/screencapture-04.png)
 
 📂 Project Structure
 
 /backend
-├── models
-├── routes
-├── server.js
-└── .env
-
 /frontend
-├── src
-│ ├── components
-│ ├── assets
-│ ├── App.js
-│ └── index.js
-
 /screenShots
-└── images
 
 ⚙️ Installation & Setup
-1️⃣ Clone the repository
+/1️⃣ Clone the repository
 
 git clone https://github.com/Kafoor-Nimas/Contact-management-System.git
 
