@@ -93,7 +93,7 @@ const ContactList = ({ contacts, setContacts }) => {
               </div>
             )}
           </div>
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 gap-10 max-xl:grid-cols-1">
             {contacts.map((contact) => (
               <div key={contact._id}>
                 <div className="bg-[#eff4ff] shadow-md rounded p-4 flex flex-col justify-between hover:shadow-lg transition">
@@ -106,7 +106,7 @@ const ContactList = ({ contacts, setContacts }) => {
                         {contact.company}
                       </p>
                     </div>
-                    <div className="text-[16px] flex gap-2 my-3 justify-between border-2 border-[#00277a21] px-3 p-3">
+                    <div className="text-[16px] flex gap-2 my-3 justify-between border-2 border-[#00277a21] px-3 p-3 max-sm:flex-col max-sm:gap-1 max-sm:p-4 mx-sm:px-6">
                       <p>📧 {contact.email}</p>
                       <p>📞 {contact.phone}</p>
                     </div>
