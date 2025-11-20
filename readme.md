@@ -29,9 +29,9 @@ Smooth UX with reusable components
 Axios-based API calls
 
 ![Homepage](./screenShots/screencapture-01.png)
-(./screenShots/screencapture-01.png)
-(./screenShots/screencapture-01.png)
-(./screenShots/screencapture-01.png)
+![Homepage](./screenShots/screencapture-01.png)
+![Homepage](./screenShots/screencapture-01.png)
+![Homepage](./screenShots/screencapture-01.png)
 
 📂 Project Structure
 
@@ -40,14 +40,16 @@ Axios-based API calls
 ├── routes
 ├── server.js
 └── .env
+
 /frontend
 ├── src
 │ ├── components
 │ ├── assets
 │ ├── App.js
 │ └── index.js
+
 /screenShots
-├── images
+└── images
 
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
