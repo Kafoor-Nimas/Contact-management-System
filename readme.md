@@ -28,8 +28,7 @@ Smooth UX with reusable components
 
 Axios-based API calls
 
-![Homepage]
-(./screenShots/screencapture-01.png)
+![Homepage](./screenShots/screencapture-01.png)
 (./screenShots/screencapture-01.png)
 (./screenShots/screencapture-01.png)
 (./screenShots/screencapture-01.png)
